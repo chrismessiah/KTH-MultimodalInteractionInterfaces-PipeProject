@@ -54,7 +54,6 @@ public class SpeedPowerUp : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (triggerE1 || triggerE2) {
-			print ("adding force");
 			Ball.AddForce (movementVector * speed * Time.deltaTime);
 		}
 	}
