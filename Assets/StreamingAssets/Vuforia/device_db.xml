@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="f3" size="3.000000 3.000000" />
-    <ImageTarget name="f2" size="2.000000 2.000000" />
-    <ImageTarget name="f1" size="2.000000 2.000000" />
+    <ImageTarget name="fid-3" size="20.000000 19.334341" />
+    <ImageTarget name="fid-2" size="20.000000 21.385767" />
+    <ImageTarget name="fid-1" size="20.000000 21.494059" />
+    <ImageTarget name="VuMark-2" size="20.000000 9.682997" />
+    <ImageTarget name="small-stone-2" size="20.000000 20.122700" />
+    <ImageTarget name="small-stone-1" size="20.000000 20.000000" />
+    <ImageTarget name="fidu-8" size="5.000000 5.165877" />
+    <ImageTarget name="fidu-7" size="5.000000 4.952607" />
+    <ImageTarget name="fidu-6" size="5.000000 5.252366" />
+    <ImageTarget name="fidu-5" size="5.000000 4.913658" />
+    <ImageTarget name="fidu-4" size="5.000000 5.055292" />
+    <ImageTarget name="fidu-3" size="5.000000 5.268987" />
+    <ImageTarget name="fidu-2" size="5.000000 4.889764" />
+    <ImageTarget name="fidu-1" size="5.000000 5.173228" />
     <ImageTarget name="example_5-star_grayscale" size="50.000000 35.000000" />
   </Tracking>
 </QCARConfig>
