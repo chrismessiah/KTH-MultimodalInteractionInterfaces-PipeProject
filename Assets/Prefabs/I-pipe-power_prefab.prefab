@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b3458ad229f44ec8ace418fdfcd2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball_go: {fileID: 1973853670164072, guid: 86bac92f06ad84c978a91b3c59df9dc2, type: 2}
 --- !u!114 &114506716345755062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,6 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b3458ad229f44ec8ace418fdfcd2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ball_go: {fileID: 1973853670164072, guid: 86bac92f06ad84c978a91b3c59df9dc2, type: 2}
 --- !u!135 &135197801130844618
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpeedPowerUp : MonoBehaviour {
 
+	public GameObject ball_go;
+
 	float speed = 30000.0f;
 	float normalize_constant = 40.0f;
-	string ball_name = "Ball";
 
 	GameObject parent, E1, E2;
 	Rigidbody ball_rb;
@@ -19,7 +20,6 @@ public class SpeedPowerUp : MonoBehaviour {
 		parent = gameObject.transform.parent.gameObject;
 		E1 = parent.transform.GetChild(0).gameObject;
 		E2 = parent.transform.GetChild(1).gameObject;
-		ball_rb = GameObject.Find(ball_name).GetComponent<Rigidbody> ();
 
 		// Create vector E1->E2 (assuming entrence is E1)
 		E1toE2 = (E2.transform.position - E1.transform.position).normalized;
@@ -29,7 +29,10 @@ public class SpeedPowerUp : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider col) {
-		if (col.gameObject.name == ball_name) {
+		print(col.gameObject.name);
+		if (col.gameObject.name == ball_go.name) {
+
+			ball_rb = col.gameObject.GetComponent<Rigidbody> ();
 
 			// entered through E1
 			if (gameObject.name == E1.name) {
@@ -53,7 +56,7 @@ public class SpeedPowerUp : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (triggerE1 || triggerE2) {
+		if (ball_rb && (triggerE1 || triggerE2)) {
 			ball_rb.AddForce (movementVector * speed * Time.deltaTime);
 		}
 	}

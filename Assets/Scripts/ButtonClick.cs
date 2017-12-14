@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class ButtonClick : MonoBehaviour {
 
 	public Button yourButton;
-	public Transform child;
+	public GameObject child;
 	public Transform parent;
+
+	GameObject currentBall;
 
 	void Start()
 	{
@@ -15,8 +17,10 @@ public class ButtonClick : MonoBehaviour {
 		btn.onClick.AddListener(TaskOnClick);
 	}
 
-	void TaskOnClick()
-	{
-		Instantiate(child, new Vector3(0, 0, -40), Quaternion.identity, parent);
+	void TaskOnClick() {
+		if (currentBall) {
+			Destroy (currentBall);
+		}
+		currentBall = Instantiate(child, new Vector3(0, 0, 5), Quaternion.identity, parent) as GameObject;
 	}
 }
