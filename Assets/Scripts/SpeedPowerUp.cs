@@ -4,42 +4,41 @@ using UnityEngine;
 
 public class SpeedPowerUp : MonoBehaviour {
 
-	float speed = 20000.0f;
-	string E1Str = "Entrence_1", E2Str = "Entrence_2"; // need to be unique
+	float speed = 30000.0f;
+	float normalize_constant = 40.0f;
+	string ball_name = "Ball";
 
-	GameObject E1, E2, Ball;
-	Rigidbody Ball_rb;
+	GameObject parent, E1, E2;
+	Rigidbody ball_rb;
 	Vector3 E1toE2, E2toE1, movementVector;
 
 	static bool triggerE1 = false, triggerE2 = false;
 
 	// Use this for initialization
 	void Start () {
-		E1 = GameObject.Find(E1Str);
-		E2 = GameObject.Find(E2Str);
-		Ball = GameObject.Find("Ball");
-		Ball_rb = Ball.GetComponent<Rigidbody> ();
+		parent = gameObject.transform.parent.gameObject;
+		E1 = parent.transform.GetChild(0).gameObject;
+		E2 = parent.transform.GetChild(1).gameObject;
+		ball_rb = GameObject.Find(ball_name).GetComponent<Rigidbody> ();
 
 		// Create vector E1->E2 (assuming entrence is E1)
-		E1toE2 = E2.transform.position - E1.transform.position;
-		E1toE2 = E1toE2.normalized;
+		E1toE2 = (E2.transform.position - E1.transform.position).normalized;
 
 		// Create vector E2->E1 (assuming entrence is E1)
-		E2toE1 = E1.transform.position - E2.transform.position;
-		E2toE1 = E2toE1.normalized;
+		E2toE1 = -E1toE2;
 	}
 
 	void OnTriggerEnter (Collider col) {
-		if (col.gameObject.name == "Ball") {
+		if (col.gameObject.name == ball_name) {
 
 			// entered through E1
-			if (gameObject.name == E1Str) {
+			if (gameObject.name == E1.name) {
 				movementVector = E1toE2;
 				triggerE1 = true;
 			}
 
 			// entered through E2
-			if (gameObject.name == E2Str) {
+			if (gameObject.name == E2.name) {
 				movementVector = E2toE1;
 				triggerE2 = true;
 			}
@@ -48,15 +47,14 @@ public class SpeedPowerUp : MonoBehaviour {
 			if (triggerE1 && triggerE2) {
 				triggerE1 = false;
 				triggerE2 = false;
-				//movementVector = null;
-				Ball_rb.velocity = Ball_rb.velocity.normalized * 10;
+				//ball_rb.velocity = ball_rb.velocity.normalized * normalize_constant;
 			}
 		}
 	}
 
 	void FixedUpdate () {
 		if (triggerE1 || triggerE2) {
-			Ball_rb.AddForce (movementVector * speed * Time.deltaTime);
+			ball_rb.AddForce (movementVector * speed * Time.deltaTime);
 		}
 	}
 
