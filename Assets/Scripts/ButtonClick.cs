@@ -21,6 +21,8 @@ public class ButtonClick : MonoBehaviour {
 		if (currentBall) {
 			Destroy (currentBall);
 		}
-		currentBall = Instantiate(child, new Vector3(0, 0, 5), Quaternion.identity, parent) as GameObject;
+		Vector3 pos = new Vector3(0, -25, -6);
+		child.transform.position = pos;
+		currentBall = Instantiate (child, parent) as GameObject;
 	}
 }
