@@ -8,7 +8,7 @@ public class ButtonClick : MonoBehaviour {
 	public Button yourButton;
 	public GameObject child;
 	public Transform parent;
-	private Vector3 spawnPos;
+	//private Vector3 spawnPos;
 
 	GameObject currentBall;
 
@@ -16,7 +16,7 @@ public class ButtonClick : MonoBehaviour {
 	{
 		Button btn = yourButton.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
-		spawnPos = new Vector3(4, -35, -11);
+		//spawnPos = new Vector3(4, -35, -11);
 	}
 
 	void TaskOnClick() {
