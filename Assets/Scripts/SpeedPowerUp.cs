@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpeedPowerUp : MonoBehaviour {
-
-	public GameObject ball_go;
-
 	float speed = 30000.0f;
 	float normalize_constant = 40.0f;
 
@@ -29,8 +26,6 @@ public class SpeedPowerUp : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider col) {
-		print(col.gameObject.name);
-		if (col.gameObject.name == ball_go.name) {
 
 			ball_rb = col.gameObject.GetComponent<Rigidbody> ();
 
@@ -52,7 +47,6 @@ public class SpeedPowerUp : MonoBehaviour {
 				triggerE2 = false;
 				//ball_rb.velocity = ball_rb.velocity.normalized * normalize_constant;
 			}
-		}
 	}
 
 	void FixedUpdate () {

@@ -25,12 +25,10 @@ public class IsInBucket : MonoBehaviour {
 	//Create text that says you win and a button to reset appears and the time pauses on collision
 	//With the surface in the bucket.
 	void OnTriggerEnter (Collider col) {
-		if (col.gameObject.name == "ball") {
 			selectedBall = col.gameObject;
 			Time.timeScale = 0;
 			winText.text = "You Win! :D";
 			resetButton.gameObject.SetActive (true);
-		}
 	}
 
 
