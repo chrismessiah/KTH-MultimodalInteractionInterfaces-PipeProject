@@ -14,30 +14,25 @@ public class SpeedPowerUp : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		parent = gameObject.transform.parent.gameObject;
-		E1 = parent.transform.GetChild(0).gameObject;
-		E2 = parent.transform.GetChild(1).gameObject;
 
-		// Create vector E1->E2 (assuming entrence is E1)
-		E1toE2 = (E2.transform.position - E1.transform.position).normalized;
-
-		// Create vector E2->E1 (assuming entrence is E1)
-		E2toE1 = -E1toE2;
 	}
 
 	void OnTriggerEnter (Collider col) {
+			parent = gameObject.transform.parent.gameObject;
+			E1 = parent.transform.GetChild(0).gameObject;
+			E2 = parent.transform.GetChild(1).gameObject;
 
 			ball_rb = col.gameObject.GetComponent<Rigidbody> ();
 
 			// entered through E1
 			if (gameObject.name == E1.name) {
-				movementVector = E1toE2;
+				movementVector = (E2.transform.position - E1.transform.position).normalized;
 				triggerE1 = true;
 			}
 
 			// entered through E2
 			if (gameObject.name == E2.name) {
-				movementVector = E2toE1;
+				movementVector = (E1.transform.position - E2.transform.position).normalized;
 				triggerE2 = true;
 			}
 
@@ -45,7 +40,6 @@ public class SpeedPowerUp : MonoBehaviour {
 			if (triggerE1 && triggerE2) {
 				triggerE1 = false;
 				triggerE2 = false;
-				//ball_rb.velocity = ball_rb.velocity.normalized * normalize_constant;
 			}
 	}
 
